@@ -38,9 +38,9 @@ cluster start:
 docker start $(docker ps -aq --filter "name=kind-")
 ```
 
-## deploying the cluster 
+# deploying the cluster 
 
-# creating cluster
+## creating cluster
 
 Config: [multi-node.yaml](multi-node.yaml)
 
