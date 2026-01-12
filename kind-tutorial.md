@@ -2,8 +2,9 @@
 - https://betterstack.com/community/guides/scaling-docker/kind/
 - https://medium.com/@aman07mishra/deploying-kubernetes-dashboard-with-helm-and-secure-access-via-ingress-08a916fef64d
 
+# helper commands
 
-# kubectl commands  
+## kubectl commands  
 
 ```
 kubectl config use-context kind-kind-cluster
@@ -19,13 +20,13 @@ kubectl config view --minify | grep server
 docker ps --filter "name=kind-cluster"
 ```
 
-# kind commands  
+## kind commands  
 ```
 kind get clusters
 kind delete cluster --name kind-cluster
 ```
 
-# cluster commands
+## cluster commands
 cluster stop:
 ```
 docker stop $(docker ps -q --filter "name=kind-")
@@ -37,37 +38,54 @@ cluster start:
 docker start $(docker ps -aq --filter "name=kind-")
 ```
 
-# create cluster
+## deploying the cluster 
 
-[create-cluster.sh](create-cluster.sh)
+# creating cluster
 
-# Deploying the dashboard (v1)
-`kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml`
+Config: [multi-node.yaml](multi-node.yaml)
 
-login to dashboard
-kubectl proxy
+deploy cluster and ingress-nginx:
+```
+./create-cluster.sh
+```
 
-go: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
 
- user for Dashboard
-
-`
+## deploying the dashboard (v1)
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
 kubectl apply -f dashboard-adminuser.yaml
+```
+
+### login to dashboard
+- kubectl proxy
+- go: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
+user for Dashboard:
+```
 kubectl -n kubernetes-dashboard create token admin-user > token.txt
-`
+```
 
-# Deploying the dashboard (v2)
+## deploying the dashboard (v2)
 
-Deploy a Helm Release named "kubernetes-dashboard" using the kubernetes-dashboard chart
+Deploy a Helm Release named "kubernetes-dashboard" using the kubernetes-dashboard chart:
 
-`helm upgrade --install kubernetes-dashboard kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard --repo https://kubernetes.github.io/dashboard/
+```
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard --repo https://kubernetes.github.io/dashboard/
 kubectl apply -f dashboard-adminuser.yaml
 kubectl apply -f dashboard-ingress.yaml
-`
+```
 
-To access Dashboard run:
+user for Dashboard:
 `kubectl -n kubernetes-dashboard create token admin-user > token.txt`
 
 go: https://dashboard.localtest.me
-  
 
+
+## deploying hello app
+[hello-app](hello-app)
+
+deploy app:
+```shell
+./cert.sh
+./apply.sh
+```

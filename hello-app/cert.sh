@@ -4,7 +4,6 @@ openssl req -x509 -nodes -days 365 \
   -out tls.crt \
   -subj "/CN=hello.localtest.me"
 
-
 kubectl create secret tls hello-tls -n default \
   --cert=tls.crt \
   --key=tls.key
