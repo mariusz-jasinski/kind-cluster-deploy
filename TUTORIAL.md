@@ -51,8 +51,6 @@ deploy cluster and ingress-nginx:
 ```
 
 ## deploying the cert-manager
-configure file .env according to pattern.env
-
 ```shell
 cd cert-manager-k8s
 ./apply.sh

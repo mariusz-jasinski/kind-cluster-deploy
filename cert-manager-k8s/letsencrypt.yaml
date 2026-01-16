@@ -1,3 +1,4 @@
+# generator certyfikatów zaufanych; ale domena i serwer muszą być publiczne
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
