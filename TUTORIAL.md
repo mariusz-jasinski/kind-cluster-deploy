@@ -1,6 +1,7 @@
 # kind manuals
-- https://betterstack.com/community/guides/scaling-docker/kind/
-- https://medium.com/@aman07mishra/deploying-kubernetes-dashboard-with-helm-and-secure-access-via-ingress-08a916fef64d
+- [Getting Started with Kind](https://betterstack.com/community/guides/scaling-docker/kind/)
+- [Deploying Cert Manager on Kubernetes](https://github.com/aman7mishra/cert-manager-k8s)
+- [Deploying Kubernetes Dashboard](https://medium.com/@aman07mishra/deploying-kubernetes-dashboard-with-helm-and-secure-access-via-ingress-08a916fef64d)
 
 # helper commands
 
@@ -49,6 +50,13 @@ deploy cluster and ingress-nginx:
 ./create-cluster.sh
 ```
 
+## deploying the cert-manager
+configure file .env according to pattern.env
+
+```shell
+cd cert-manager-k8s
+./apply.sh
+```
 
 ## deploying the dashboard (v1)
 ```
@@ -81,11 +89,19 @@ user for Dashboard:
 go: https://dashboard.localtest.me
 
 
-## deploying hello app
+## deploying hello app with ingress fake cert
 [hello-app](hello-app)
 
 deploy app:
 ```shell
 ./cert.sh
+./apply.sh
+```
+
+## deploying hello app with cert-manager
+[hello-app-trust-cert](hello-app-trust-cert)
+
+deploy app:
+```shell
 ./apply.sh
 ```
