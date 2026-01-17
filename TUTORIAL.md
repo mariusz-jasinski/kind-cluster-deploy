@@ -1,4 +1,21 @@
-# kind manuals
+# kind tutorial
+
+<!-- TOC -->
+* [kind manuals](#kind-manuals)
+* [helper commands](#helper-commands)
+  * [kubectl commands](#kubectl-commands-)
+  * [kind commands](#kind-commands-)
+  * [cluster commands](#cluster-commands)
+* [deploying the cluster](#deploying-the-cluster-)
+  * [creating cluster](#creating-cluster)
+  * [deploying the cert-manager](#deploying-the-cert-manager)
+  * [deploying the dashboard (v1)](#deploying-the-dashboard-v1)
+  * [deploying the dashboard (v2)](#deploying-the-dashboard-v2)
+  * [deploying hello app with fake cert (nginx ingress)](#deploying-hello-app-with-fake-cert-nginx-ingress)
+  * [deploying hello app with internal-ca (cert-manager)](#deploying-hello-app-with-internal-ca-cert-manager)
+<!-- TOC -->
+
+## kind manuals
 - [Getting Started with Kind](https://betterstack.com/community/guides/scaling-docker/kind/)
 - [Deploying Cert Manager on Kubernetes](https://github.com/aman7mishra/cert-manager-k8s)
 - [Simple CA Setup with Kubernetes Cert Manager](https://medium.com/geekculture/a-simple-ca-setup-with-kubernetes-cert-manager-bc8ccbd9c2)
