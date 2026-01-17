@@ -6,6 +6,12 @@ metadata:
 spec:
   secretName: dashboard-tls
   isCA: false
+  commonName: dashboard
+  subject:
+    organizations:
+      - Giga Breslau SA
+    organizationalUnits:
+      - Dashboard Department
   dnsNames:
   - dashboard.localtest.me
   - dashboard
