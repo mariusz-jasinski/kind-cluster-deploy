@@ -32,9 +32,9 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: hello-ingress
+  name: today-ingress
 spec:
-  secretName: hello-ingress
+  secretName: today-ingress
   isCA: false
   commonName: hello
   subject:
@@ -55,7 +55,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hello-ingress
+  name: today-ingress
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/issuer: internal-ca
@@ -65,7 +65,7 @@ spec:
     - hosts:
         - hello.localtest.me
       # not must to be here
-      # secretName: hello-ingress
+      #secretName: today-ingress
   rules:
     - host: hello.localtest.me
       http:

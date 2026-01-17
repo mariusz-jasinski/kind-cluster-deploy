@@ -20,6 +20,8 @@ kubectl get all -n kubernetes-dashboard
 
 kubectl config view --minify | grep server
 docker ps --filter "name=kind-cluster"
+
+kubectl get Certificate,Issuer,secret -n default
 ```
 
 ## kind commands  
@@ -98,11 +100,6 @@ deploy app:
 ```shell
 ./cert.sh
 ./apply.sh
-```
-
-diagnostic:
-```shell
-kubectl -n default get Certificate,Issuer,secret
 ```
 
 ## deploying hello app with internal-ca (cert-manager)
