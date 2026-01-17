@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
  name: hello-app
 spec:
- replicas: 3
+ replicas: 1
  selector:
    matchLabels:
      app: hello
@@ -35,14 +35,16 @@ metadata:
   name: hello-tls
 spec:
   secretName: hello-tls
-  commonName: hello.localtest.me
+  isCA: false
   dnsNames:
   - hello.localtest.me
+  - hello
   issuerRef:
     name: internal-ca
     kind: ClusterIssuer
   usages:
-  - server auth
+    - client auth
+    - server auth
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
