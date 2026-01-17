@@ -1,6 +1,7 @@
 # kind manuals
 - [Getting Started with Kind](https://betterstack.com/community/guides/scaling-docker/kind/)
 - [Deploying Cert Manager on Kubernetes](https://github.com/aman7mishra/cert-manager-k8s)
+- [Simple CA Setup with Kubernetes Cert Manager](https://medium.com/geekculture/a-simple-ca-setup-with-kubernetes-cert-manager-bc8ccbd9c2)
 - [Deploying Kubernetes Dashboard](https://medium.com/@aman07mishra/deploying-kubernetes-dashboard-with-helm-and-secure-access-via-ingress-08a916fef64d)
 
 # helper commands
@@ -29,13 +30,16 @@ kind delete cluster --name kind-cluster
 
 ## cluster commands
 cluster stop:
-```
+```shell
 docker stop $(docker ps -q --filter "name=kind-")
+```
+
+```cmd
 wsl --shutdown
 ```
 
 cluster start:
-```
+```shell
 docker start $(docker ps -aq --filter "name=kind-")
 ```
 

@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: ca-issuer
+  name: ca-self-issuer
   namespace: cert-manager
 spec:
   selfSigned: {}
@@ -14,13 +14,23 @@ metadata:
   namespace: cert-manager
 spec:
   isCA: true
-  commonName: internal-ca.localtest.me
+  commonName: internal-ca
+  subject:
+    organizations:
+      - Giga Breslau SA
+    organizationalUnits:
+      - Super Department
   dnsNames:
     - internal-ca.localtest.me
     - '*.localtest.me'
   secretName: internal-ca-keypair
+  privateKey:
+    algorithm: ECDSA
+    size: 256
   issuerRef:
-    name: ca-issuer
+    name: ca-self-issuer
+    kind: Issuer
+    group: cert-manager.io
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
