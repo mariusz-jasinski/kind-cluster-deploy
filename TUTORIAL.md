@@ -91,7 +91,7 @@ user for Dashboard:
 go: https://dashboard.localtest.me
 
 
-## deploying hello app with ingress fake cert
+## deploying hello app with fake cert (nginx ingress)
 [hello-app](hello-app)
 
 deploy app:
@@ -100,7 +100,12 @@ deploy app:
 ./apply.sh
 ```
 
-## deploying hello app with cert-manager
+diagnostic:
+```shell
+kubectl -n default get Certificate,Issuer,secret
+```
+
+## deploying hello app with internal-ca (cert-manager)
 [hello-app-trust-cert](hello-app-trust-cert)
 
 deploy app:
